@@ -21,6 +21,7 @@ export function build_book_groups(
       else map.set(key, [book]);
     }
   }
+  // ordena por tamanho decrescente: os grupos com mais livros aparecem primeiro
   return [...map.entries()]
     .map(([name, group]) => ({ name, books: group }))
     .sort((a, b) => b.books.length - a.books.length);
