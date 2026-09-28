@@ -9,7 +9,7 @@ export interface BookGroup {
 
 export function build_book_groups(
   books: Book[],
-  // key_fn recebe string[]: um livro pode pertencer a várias séries ou várias missões — a mesma função serve Series e Quest
+  // key_fn recebe string[]: um livro pode pertencer a várias séries 
   key_fn: (book: Book) => string[],
 ): BookGroup[] {
   const map = new Map<string, Book[]>();

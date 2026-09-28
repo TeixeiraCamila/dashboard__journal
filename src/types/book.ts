@@ -1,27 +1,39 @@
-// 1ª contrato dos dados
-// todos os arquivos dependem desses tipos
+// 1ª contrato dos dados; todos os arquivos dependem desses tipos
 // espelha resposta do backend notion_api
 
+export type BookStatus = "Reading" | "Read" | "DNF" | "To be read";
+
+export type BookType = "Audiobook" | "Kindle" | "Mangá" | "Paper";
 export interface Book {
   id: string;
+
   name: string;
   author: string[];
-  status?: string | null;
+
+  status?: BookStatus | null;
   rate?: string | null;
+
   wasReadIn?: string[];
   genres?: string[];
+
   totalPages?: number | null;
-  currentlyOn?: number | null;
+  currentPage?: number | null;
+
   bookSeries?: string | null;
-  type?: string[];
+  type?: BookType[];
+
   cover?: string[];
+
   startEnd?: { start: string; end?: string; time_zone?: string | null } | null;
+
   literaryAtlas?: string | null;
   iHaveCopy?: boolean;
+
   firstPublished?: string | null;
+
   progress?: string | null;
+
   publishedBy?: string[];
-  quest?: string[];
 }
 
 export interface BookOptions {
