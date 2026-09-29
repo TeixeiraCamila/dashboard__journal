@@ -1,0 +1,113 @@
+/* GroupCard: container e card genéricos de agrupamento de livros (séries e missões) */
+.groups-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.groups-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-text-secondary);
+  font-size: 16px;
+}
+
+.group-card {
+  padding: var(--space-4);
+  border: var(--border-width) solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.group-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.group-card__title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: .03em;
+}
+
+.group-card__count {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  padding: var(--space-1) var(--space-3);
+  border: var(--border-width) solid var(--color-border);
+}
+
+.group-card__books {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  padding: var(--space-2);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.group-card__book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  min-width: 100px;
+  max-width: 100px;
+  transition: transform var(--transition-fast);
+}
+
+.group-card__book:hover {
+  transform: translateY(-2px);
+}
+
+.group-card__cover {
+  width: 100px;
+  height: 150px;
+  object-fit: cover;
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: var(--shadow-sm)
+}
+
+.group-card__cover-placeholder {
+  width: 100px;
+  height: 150px;
+  border: var(--border-width) solid var(--color-border);
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.group-card__book-name {
+  font-size: 12px;
+  color: var(--color-text);
+  text-align: center;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .group-card__books {
+    gap: var(--space-3);
+  }
+
+  .group-card__book {
+    min-width: 80px;
+    max-width: 80px;
+  }
+
+  .group-card__cover,
+  .group-card__cover-placeholder {
+    width: 80px;
+    height: 120px;
+  }
+}

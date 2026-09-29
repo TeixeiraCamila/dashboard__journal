@@ -9,13 +9,3 @@ export const api_client = axios.create({
   baseURL: api_url,
   headers: { "Content-Type": "application/json" },
 });
-
-api_client.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (!error.response) {
-      console.warn("⚠️ Sem conexão com o servidor:", error.message);
-    }
-    return Promise.reject(error);
-  },
-);
