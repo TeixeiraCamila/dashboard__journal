@@ -1,3 +1,5 @@
+import "@/styles/List.css";
+
 import { useBookOptions, useBooksInfinite } from "@/hooks";
 import React, { useEffect, useRef } from "react";
 import { Link, useSearchParams } from "react-router-dom";
@@ -8,10 +10,9 @@ export function List() {
 
   const [selected_genre, set_selected_genre] = React.useState("");
 
-  const { data, fetchNextPage, hasNextPage, isLoading } = useBooksInfinite(
-    50,
-    search_param,
-  );
+  const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
+    useBooksInfinite(50, search_param);
+
   const { data: options } = useBookOptions();
   const genres = options?.Tags || [];
   const books = data?.pages.flatMap((p) => p.data) ?? [];
@@ -23,13 +24,14 @@ export function List() {
     if (!el) return;
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && hasNextPage) fetchNextPage();
+        if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage)
+          fetchNextPage();
       },
       { rootMargin: "200px" },
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [fetchNextPage, hasNextPage]);
+  }, [fetchNextPage, hasNextPage, isFetchingNextPage, isLoading]);
 
   // Toggle de gênero: clica no mesmo gênero para limpar o filtro
   const handle_genre_click = (genre: string) => {
@@ -47,7 +49,14 @@ export function List() {
 
   return (
     <>
-      <header>List</header>
+      <header className="main__header">
+        <h1 className="main__title">My Books</h1>
+        <p className="main__subtitle">
+          {search_param ? `Results for "${search_param}" — ` : ""}
+          {filtered_books.length}
+          {hasNextPage ? "+" : ""} books
+        </p>
+      </header>
       {genres.length > 0 && search_param === "" && (
         <div className="genres-container">
           <button
@@ -56,7 +65,7 @@ export function List() {
             aria-pressed={selected_genre === ""}
             onClick={() => handle_genre_click("")}
           >
-            Todos
+            All
           </button>
           {genres.map((genre) => (
             <button
@@ -86,6 +95,13 @@ export function List() {
           </div>
         ))}
       </div>
+      {hasNextPage && (
+        <div
+          ref={sentinel_ref}
+          className="list-sentinel"
+          aria-hidden="true"
+        ></div>
+      )}
     </>
   );
 }

@@ -24,43 +24,57 @@ export function Series() {
 
   const groups = build_book_groups(all_books, (b) =>
     b.bookSeries ? [b.bookSeries] : [],
-  ).filter((group) => group.books.length > 1);;
+  )
+  // .filter((group) => group.books.length > 1);
+
+  const books_in_series = groups.reduce(
+    (total, group) => total + group.books.length,
+    0,
+  );
 
   return (
-    <div className="groups-page">
-      {groups.map(({ name, books: group_books }) => (
-        <div key={name} className="group-card">
-          <div className="group-card__header">
-            <h2 className="group-card__title">{name}</h2>
-            <span className="group-card__count">
-              {group_books.length}{" "}
-              {group_books.length === 1 ? "book" : "books"}
-            </span>
+    <>
+      <header className="main__header">
+        <h1 className="main__title">Series</h1>
+        <p className="main__subtitle">
+          {groups.length} series · {books_in_series} books
+        </p>
+      </header>
+      <div className="groups-page">
+        {groups.map(({ name, books: group_books }) => (
+          <div key={name} className="group-card">
+            <div className="group-card__header">
+              <h2 className="group-card__title">{name}</h2>
+              <span className="group-card__count">
+                {group_books.length}{" "}
+                {group_books.length === 1 ? "book" : "books"}
+              </span>
+            </div>
+            <div className="group-card__books">
+              {group_books.map((book) => (
+                <Link
+                  key={book.id}
+                  to={`/books/${book.id}`}
+                  className="group-card__book"
+                >
+                  {book.cover && book.cover.length > 0 ? (
+                    <img
+                      className="group-card__cover"
+                      src={book.cover[0]}
+                      alt={book.name}
+                    />
+                  ) : (
+                    <div className="group-card__cover-placeholder">
+                      {book.name[0]}
+                    </div>
+                  )}
+                  <span className="group-card__book-name">{book.name}</span>
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="group-card__books">
-            {group_books.map((book) => (
-              <Link
-                key={book.id}
-                to={`/books/${book.id}`}
-                className="group-card__book"
-              >
-                {book.cover && book.cover.length > 0 ? (
-                  <img
-                    className="group-card__cover"
-                    src={book.cover[0]}
-                    alt={book.name}
-                  />
-                ) : (
-                  <div className="group-card__cover-placeholder">
-                    {book.name[0]}
-                  </div>
-                )}
-                <span className="group-card__book-name">{book.name}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 }

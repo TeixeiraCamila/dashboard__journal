@@ -68,7 +68,7 @@ export function Top10() {
       </section>
       <section className="authors-section">
         <h2 className="section-title">
-          <RateReview /> Autores mais lidos
+          <RateReview /> Most read authors
         </h2>
         <div className="authors-list">
           {top_authors.map(({ name, count }, i) => (

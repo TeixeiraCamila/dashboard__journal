@@ -1,10 +1,16 @@
-import { BrowserRouter, Routes, Route, Navigate, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, NavLink } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+import BarChart from "@mui/icons-material/BarChart";
+import ViewList from "@mui/icons-material/ViewList";
+import EmojiEvents from "@mui/icons-material/EmojiEvents";
+import LibraryBooks from "@mui/icons-material/LibraryBooks";
 
 import { Dashboard } from "@/pages/Dashboard";
 import { Top10 } from "@/pages/Top10";
 import { Series } from "@/pages/Series";
 import { List } from "@/pages/List";
+import { NotFound } from "@/pages/NotFound";
 
 const query_client = new QueryClient({
   defaultOptions: {
@@ -13,10 +19,10 @@ const query_client = new QueryClient({
 });
 
 const nav_items = [
-  { path: "/", label: "Dashboard" },
-  { path: "/top10", label: "Top10" },
-  { path: "/series", label: "Series" },
-  { path: "/list", label: "List" },
+  { path: "/", label: "Dashboard", icon: BarChart },
+  { path: "/top10", label: "Top10", icon: EmojiEvents },
+  { path: "/series", label: "Series", icon: LibraryBooks },
+  { path: "/list", label: "List", icon: ViewList },
 ];
 
 const routes_items = [
@@ -38,11 +44,24 @@ function Layout() {
   return (
     <div className="dashboard">
       <nav className="sidebar">
-        {nav_items.map((item) => (
-          <Link key={item.path} to={item.path}>
-            {item.label}
-          </Link>
-        ))}
+        <div className="sidebar__nav">
+          {nav_items.map((item) => {
+            const Icon = item.icon;
+            return (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                end={item.path === "/"}
+                className={({ isActive }) =>
+                  `sidebar__link ${isActive ? "sidebar__link--active" : ""}`
+                }
+              >
+                <Icon />
+                <span>{item.label}</span>
+              </NavLink>
+            );
+          })}
+        </div>
       </nav>
       <div className="dashboard__content">
         <main className="main">
@@ -55,7 +74,7 @@ function Layout() {
               />
             ))}
             <Route path="/dashboard" element={<Navigate to="/" replace />} />
-            {/* <Route path="*" element={<NotFound />} /> */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
       </div>

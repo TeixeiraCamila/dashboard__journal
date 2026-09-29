@@ -61,7 +61,7 @@ export function useBooksInfinite(
     initialPageParam: undefined as string | undefined,
     getNextPageParam: (last_page) =>
       last_page.pagination.hasMore
-        ? last_page.pagination.nextCursor
+        ? (last_page.pagination.nextCursor ?? undefined)
         : undefined,
   });
 }

@@ -79,16 +79,6 @@ body {
   background: var(--color-surface);
 }
 
-.sidebar__title {
-  font-family: var(--font-heading);
-  font-size: 14px;
-  color: var(--color-text);
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  letter-spacing: .03em;
-  opacity: 0.6;
-}
-
 .sidebar__nav {
   display: flex;
   flex-direction: column;
@@ -138,30 +128,6 @@ body {
   overflow: hidden;
 }
 
-/* Header */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 72px;
-  padding: 0 var(--space-6);
-  border-bottom: var(--border-width) solid var(--color-border);
-  background: var(--color-surface);
-}
-
-.header__title {
-  font-family: var(--font-heading);
-  font-size: 20px;
-  color: var(--color-text);
-  letter-spacing: .03em;
-}
-
-.header__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
 /* Main content */
 .main {
   flex: 1;
@@ -180,6 +146,14 @@ body {
   font-size: 32px;
   font-weight: 700;
   color: var(--color-text);
+  letter-spacing: .03em;
+}
+
+.main__subtitle {
+  margin-top: var(--space-2);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
   letter-spacing: .03em;
 }
 
@@ -272,6 +246,42 @@ body {
   color: var(--color-primary);
 }
 
+
+/* Card */
+.stat-card {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--color-border);
+  background: var(--color-surface);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-card__value {
+  font-family: var(--font-heading);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.stat-card__label {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  text-align: center;
+  font-weight: 500;
+}
+
 /* Responsivo */
 @media (max-width: 1200px) {
   .dashboard {
@@ -293,10 +303,6 @@ body {
     overflow-x: auto;
   }
 
-  .sidebar__title {
-    display: none;
-  }
-
   .sidebar__nav {
     flex-direction: row;
     gap: var(--space-1);
@@ -306,15 +312,6 @@ body {
     width: auto;
     padding: var(--space-2);
     font-size: 10px;
-  }
-
-  .sidebar__link span {
-    display: none;
-  }
-
-  .header {
-    height: 56px;
-    padding: 0 var(--space-4);
   }
 
   .main {

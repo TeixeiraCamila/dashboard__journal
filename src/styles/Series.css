@@ -5,13 +5,6 @@
   gap: var(--space-6);
 }
 
-.groups-empty {
-  text-align: center;
-  padding: 60px 20px;
-  color: var(--color-text-secondary);
-  font-size: 16px;
-}
-
 .group-card {
   padding: var(--space-4);
   border: var(--border-width) solid var(--color-border);
