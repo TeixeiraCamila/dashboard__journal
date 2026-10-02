@@ -10,6 +10,7 @@ import { Dashboard } from "@/pages/Dashboard";
 import { Top10 } from "@/pages/Top10";
 import { Series } from "@/pages/Series";
 import { List } from "@/pages/List";
+import { BookDetail } from "@/pages/Book";
 import { NotFound } from "@/pages/NotFound";
 
 const query_client = new QueryClient({
@@ -30,6 +31,7 @@ const routes_items = [
   { path: "/top10", element: <Top10 /> },
   { path: "/series", element: <Series /> },
   { path: "/list", element: <List /> },
+  { path: "/books/:id", element: <BookDetail /> },
 ];
 export default function App() {
   return (
