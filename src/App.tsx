@@ -1,3 +1,4 @@
+// Raiz da aplicação: provider do TanStack Query, rotas e layout com sidebar
 import { BrowserRouter, Routes, Route, Navigate, NavLink } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 

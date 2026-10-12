@@ -1,3 +1,4 @@
+// Página de listagem: catálogo com filtro por gênero e scroll infinito
 import "@/styles/List.css";
 
 import { useBookOptions, useBooksInfinite } from "@/hooks";

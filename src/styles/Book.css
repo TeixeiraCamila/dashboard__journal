@@ -1,3 +1,4 @@
+/* Estilos da página de detalhe do livro */
 .book-detail {
   max-width: 900px;
 }
@@ -94,7 +95,7 @@
   background: var(--color-text-light);
 }
 
-/* Facts read as a catalogue card: label column, value column, hairline rules */
+/* Fatos exibidos como ficha de catálogo: colunas de rótulo e valor */
 .book-detail__facts {
   display: grid;
   grid-template-columns: 160px 1fr;

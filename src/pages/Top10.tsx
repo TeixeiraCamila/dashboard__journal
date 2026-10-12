@@ -1,3 +1,4 @@
+// Página Top 10: livros mais bem avaliados, favoritos e autores mais lidos
 import "@/styles/Top10.css";
 import { Link } from "react-router-dom";
 import { useBooks, useBookStats } from "@/hooks";

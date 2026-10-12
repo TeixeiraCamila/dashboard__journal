@@ -1,3 +1,4 @@
+// Página de detalhe do livro: capa, ficha técnica, progresso e gêneros
 import "@/styles/Book.css";
 
 import { useBookById } from "@/hooks";

@@ -1,3 +1,4 @@
+// Página de séries: agrupa os livros por série em cards horizontais
 import "@/styles/Series.css";
 import { Link } from "react-router-dom";
 import { useBooks } from "@/hooks";

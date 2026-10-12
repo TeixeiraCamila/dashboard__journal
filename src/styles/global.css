@@ -1,3 +1,4 @@
+/* Tokens globais, reset e estilos compartilhados entre as páginas */
 :root {
   --color-primary: #A44A3F;
   --color-primary-hover: #8C3C33;
@@ -128,7 +129,7 @@ body {
   overflow: hidden;
 }
 
-/* Main content */
+/* Conteúdo principal */
 .main {
   flex: 1;
   min-height: 0;
@@ -157,7 +158,7 @@ body {
   letter-spacing: .03em;
 }
 
-/* Stats grid */
+/* Grade de estatísticas */
 .stats-grid {
   display: flex;
   flex-wrap: wrap;
@@ -165,7 +166,7 @@ body {
   margin-bottom: var(--space-8);
 }
 
-/* Charts grid */
+/* Grade de gráficos */
 .charts-grid {
   display: flex;
   flex-wrap: wrap;
@@ -195,7 +196,7 @@ body {
   flex-basis: 100%;
 }
 
-/* Loading & Error */
+/* Carregando e erro */
 .loading {
   display: flex;
   align-items: center;
@@ -214,7 +215,7 @@ body {
   color: var(--color-error);
 }
 
-/* Section titles (shared between pages) */
+/* Títulos de seção (compartilhados entre as páginas) */
 .section-title {
   font-family: var(--font-heading);
   font-size: 22px;
@@ -227,7 +228,7 @@ body {
   gap: var(--space-2);
 }
 
-/* Generic tag/badge */
+/* Tag/badge genérico */
 .tag {
   display: inline-flex;
   align-items: center;

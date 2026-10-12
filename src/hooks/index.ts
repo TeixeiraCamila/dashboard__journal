@@ -1,7 +1,5 @@
-// 4° é a camada entre as páginas e a API
-// centralizar React Query para política de cache única
-// cada hook encapsula uma função de fetch do dentro do TanStack Query
-// páginas nunca chamam Axios direto
+// Camada entre páginas e API: centraliza o TanStack Query e a política de cache
+// Cada hook encapsula um fetch; as páginas nunca usam Axios direto
 
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import {

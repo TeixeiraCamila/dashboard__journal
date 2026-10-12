@@ -1,3 +1,4 @@
+// Página inicial: estatísticas de leitura em cards e gráficos
 import { useBooks, useBookOptions, useBookStats } from "@/hooks";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { BarChart } from "@mui/x-charts/BarChart";
