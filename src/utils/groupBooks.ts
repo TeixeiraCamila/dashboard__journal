@@ -1,4 +1,4 @@
-// 5º agrupa livros por uma chave e ordena por tamanhoimport type { Book } from "@/types/book";
+// Agrupa livros por uma chave e ordena os grupos por tamanho
 
 import type { Book } from "@/types/book";
 
@@ -9,7 +9,7 @@ export interface BookGroup {
 
 export function build_book_groups(
   books: Book[],
-  // key_fn recebe string[]: um livro pode pertencer a várias séries 
+  // key_fn recebe string[]: um livro pode pertencer a várias séries
   key_fn: (book: Book) => string[],
 ): BookGroup[] {
   const map = new Map<string, Book[]>();
