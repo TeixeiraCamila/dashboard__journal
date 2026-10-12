@@ -13,11 +13,11 @@ export function Series() {
   } = useBooks();
 
   if (books_loading) {
-    return <div className="loading">Loading data...</div>;
+    return <div className="loading">Carregando dados...</div>;
   }
   if (books_error) {
     return (
-      <div className="error">Error loading data: {books_error.message}</div>
+      <div className="error">Erro ao carregar dados: {books_error.message}</div>
     );
   }
 
@@ -25,8 +25,7 @@ export function Series() {
 
   const groups = build_book_groups(all_books, (b) =>
     b.bookSeries ? [b.bookSeries] : [],
-  )
-  // .filter((group) => group.books.length > 1);
+  );
 
   const books_in_series = groups.reduce(
     (total, group) => total + group.books.length,
@@ -36,9 +35,9 @@ export function Series() {
   return (
     <>
       <header className="main__header">
-        <h1 className="main__title">Series</h1>
+        <h1 className="main__title">Séries</h1>
         <p className="main__subtitle">
-          {groups.length} series · {books_in_series} books
+          {groups.length} séries · {books_in_series} livros
         </p>
       </header>
       <div className="groups-page">
@@ -48,7 +47,7 @@ export function Series() {
               <h2 className="group-card__title">{name}</h2>
               <span className="group-card__count">
                 {group_books.length}{" "}
-                {group_books.length === 1 ? "book" : "books"}
+                {group_books.length === 1 ? "livro" : "livros"}
               </span>
             </div>
             <div className="group-card__books">

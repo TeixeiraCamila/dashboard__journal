@@ -45,17 +45,17 @@ export function List() {
     : books;
 
   if (isLoading) {
-    return <div className="loading">Loading data...</div>;
+    return <div className="loading">Carregando dados...</div>;
   }
 
   return (
     <>
       <header className="main__header">
-        <h1 className="main__title">My Books</h1>
+        <h1 className="main__title">Meus livros</h1>
         <p className="main__subtitle">
-          {search_param ? `Results for "${search_param}" — ` : ""}
+          {search_param ? `Resultados para "${search_param}" — ` : ""}
           {filtered_books.length}
-          {hasNextPage ? "+" : ""} books
+          {hasNextPage ? "+" : ""} livros
         </p>
       </header>
       {genres.length > 0 && search_param === "" && (
@@ -66,7 +66,7 @@ export function List() {
             aria-pressed={selected_genre === ""}
             onClick={() => handle_genre_click("")}
           >
-            All
+            Todos
           </button>
           {genres.map((genre) => (
             <button

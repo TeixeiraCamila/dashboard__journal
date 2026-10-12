@@ -21,10 +21,10 @@ const query_client = new QueryClient({
 });
 
 const nav_items = [
-  { path: "/", label: "Dashboard", icon: BarChart },
+  { path: "/", label: "Painel", icon: BarChart },
   { path: "/top10", label: "Top10", icon: EmojiEvents },
-  { path: "/series", label: "Series", icon: LibraryBooks },
-  { path: "/list", label: "List", icon: ViewList },
+  { path: "/series", label: "Séries", icon: LibraryBooks },
+  { path: "/list", label: "Lista", icon: ViewList },
 ];
 
 const routes_items = [

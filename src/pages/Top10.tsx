@@ -15,11 +15,11 @@ export function Top10() {
   const { data: stats, isLoading: stats_loading } = useBookStats();
 
   if (books_loading || stats_loading) {
-    return <div className="loading">Loading data...</div>;
+    return <div className="loading">Carregando dados...</div>;
   }
   if (books_error) {
     return (
-      <div className="error">Error loading data: {books_error.message}</div>
+      <div className="error">Erro ao carregar dados: {books_error.message}</div>
     );
   }
 
@@ -40,13 +40,13 @@ export function Top10() {
       </header>
       <section className="top10-section">
         <h2 className="section-title">
-          <EmojiEvents /> Top Books
+          <EmojiEvents /> Melhores livros
         </h2>
         <div className="books-grid">
           {top_rated.map((book) => (
             <Link key={book.id} to={`/books/${book.id}`} className="book-card">
               <h3 className="book-name">{book.name}</h3>
-              <p className="book-author">by {book.author?.join(", ") ?? ""}</p>
+              <p className="book-author">por {book.author?.join(", ") ?? ""}</p>
               <span className="book-rate">{book.rate}</span>
             </Link>
           ))}
@@ -54,14 +54,14 @@ export function Top10() {
       </section>
       <section className="favorites-section">
         <h2 className="section-title">
-          <Favorite /> Favorites
+          <Favorite /> Favoritos
         </h2>
         <div className="books-list">
           {favorites.map((book) => (
             <Link key={book.id} to={`/books/${book.id}`} className="book-item">
               <span>
                 {book.name}
-                {book.author?.[0] ? ` by ${book.author[0]}` : ""}
+                {book.author?.[0] ? ` por ${book.author[0]}` : ""}
               </span>
             </Link>
           ))}
@@ -69,14 +69,14 @@ export function Top10() {
       </section>
       <section className="authors-section">
         <h2 className="section-title">
-          <RateReview /> Most read authors
+          <RateReview /> Autores mais lidos
         </h2>
         <div className="authors-list">
           {top_authors.map(({ name, count }, i) => (
             <div key={name} className="author-item">
               <span className="author-rank">#{i + 1}</span>
               <span className="author-name">{name}</span>
-              <span className="author-count">{count} books</span>
+              <span className="author-count">{count} livros</span>
             </div>
           ))}
         </div>

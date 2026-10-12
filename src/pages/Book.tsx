@@ -24,7 +24,7 @@ const format_date = (iso?: string | null) => {
   });
 };
 
-// currentPage is often missing; the API sends a block bar ("▰▰▰▱ 40%") as fallback
+// currentPage costuma faltar; a API envia a barra de blocos ("▰▰▰▱ 40%") como fallback
 const progress_percent = (book: Book) => {
   if (book.currentPage && book.totalPages) {
     return Math.min(100, Math.round((book.currentPage / book.totalPages) * 100));
@@ -36,15 +36,15 @@ const progress_percent = (book: Book) => {
 const build_facts = (book: Book) =>
   [
     { label: "Status", value: book.status ?? "" },
-    { label: "Rating", value: book.rate ?? "" },
-    { label: "Format", value: book.type?.join(", ") ?? "" },
-    { label: "Pages", value: book.totalPages ? String(book.totalPages) : "" },
-    { label: "First published", value: book.firstPublished ?? "" },
-    { label: "Publisher", value: book.publishedBy?.join(", ") ?? "" },
-    { label: "My copy", value: book.iHaveCopy ? "Yes" : "No" },
-    { label: "Series", value: book.bookSeries ?? "" },
-    { label: "Literary atlas", value: book.literaryAtlas ?? "" },
-    { label: "Read in", value: book.wasReadIn?.join(", ") ?? "" },
+    { label: "Nota", value: book.rate ?? "" },
+    { label: "Formato", value: book.type?.join(", ") ?? "" },
+    { label: "Páginas", value: book.totalPages ? String(book.totalPages) : "" },
+    { label: "Primeira publicação", value: book.firstPublished ?? "" },
+    { label: "Editora", value: book.publishedBy?.join(", ") ?? "" },
+    { label: "Tenho exemplar", value: book.iHaveCopy ? "Sim" : "Não" },
+    { label: "Série", value: book.bookSeries ?? "" },
+    { label: "Atlas literário", value: book.literaryAtlas ?? "" },
+    { label: "Lido em", value: book.wasReadIn?.join(", ") ?? "" },
   ].filter((fact) => fact.value !== "");
 
 export function BookDetail() {
@@ -58,22 +58,22 @@ export function BookDetail() {
   };
 
   if (isLoading) {
-    return <div className="loading">Loading data...</div>;
+    return <div className="loading">Carregando dados...</div>;
   }
   if (error) {
     return (
       <div className="error">
-        <p>Could not load this book.</p>
+        <p>Não foi possível carregar este livro.</p>
         <p className="book-detail__error-detail">{error.message}</p>
-        <Link to="/list">Back to library</Link>
+        <Link to="/list">Voltar para a biblioteca</Link>
       </div>
     );
   }
   if (!book) {
     return (
       <div className="error">
-        <p>Book not found.</p>
-        <Link to="/list">Back to library</Link>
+        <p>Livro não encontrado.</p>
+        <Link to="/list">Voltar para a biblioteca</Link>
       </div>
     );
   }
@@ -87,13 +87,13 @@ export function BookDetail() {
   return (
     <article className="book-detail">
       <button type="button" className="book-detail__back" onClick={go_back}>
-        <span aria-hidden="true">&larr;</span> Back
+        <span aria-hidden="true">&larr;</span> Voltar
       </button>
 
       <header className="main__header book-detail__header">
         <h1 className="main__title">{book.name}</h1>
         <p className="main__subtitle">
-          {book.author?.length ? `by ${book.author.join(", ")}` : "Author unknown"}
+          {book.author?.length ? `por ${book.author.join(", ")}` : "Autor desconhecido"}
         </p>
       </header>
 
@@ -131,14 +131,14 @@ export function BookDetail() {
 
       {percent !== null && (
         <section className="book-detail__progress">
-          <h2 className="section-title">Reading progress</h2>
+          <h2 className="section-title">Progresso de leitura</h2>
           <p
             className="book-detail__meter"
             role="progressbar"
             aria-valuenow={percent}
             aria-valuemin={0}
             aria-valuemax={100}
-            aria-label={`${book.name} reading progress`}
+            aria-label={`${book.name} — progresso de leitura`}
           >
             <span className="book-detail__meter-blocks" aria-hidden="true">
               {Array.from({ length: 10 }, (_, i) => (
@@ -158,9 +158,9 @@ export function BookDetail() {
           </p>
           {(started || finished) && (
             <p className="book-detail__dates">
-              {started && <span>Started {started}</span>}
-              {finished && <span>Finished {finished}</span>}
-              {started && !finished && <span>Still reading</span>}
+              {started && <span>Iniciado em {started}</span>}
+              {finished && <span>Finalizado em {finished}</span>}
+              {started && !finished && <span>Ainda lendo</span>}
             </p>
           )}
         </section>
@@ -168,7 +168,7 @@ export function BookDetail() {
 
       {book.genres && book.genres.length > 0 && (
         <section className="book-detail__tags">
-          <h2 className="section-title">Genres</h2>
+          <h2 className="section-title">Gêneros</h2>
           <div className="book-detail__tag-list">
             {book.genres.map((genre) => (
               <span key={genre} className="tag">

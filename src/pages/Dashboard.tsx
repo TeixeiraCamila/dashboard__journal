@@ -34,11 +34,11 @@ export function Dashboard() {
   const { data: options } = useBookOptions();
 
   if (books_loading || stats_loading) {
-    return <div className="loading">Loading data...</div>;
+    return <div className="loading">Carregando dados...</div>;
   }
   if (books_error) {
     return (
-      <div className="error">Error loading data: {books_error.message}</div>
+      <div className="error">Erro ao carregar dados: {books_error.message}</div>
     );
   }
 
@@ -84,39 +84,39 @@ export function Dashboard() {
   return (
     <>
       <header className="main__header">
-        <h1 className="main__title"> Reading Dashboard</h1>
+        <h1 className="main__title"> Painel de leitura</h1>
       </header>
 
       <div className="stats-grid">
         <div className="stat-card">
           <span className="stat-card__value">{s.totalBooks}</span>
-          <p className="stat-card__label">Total books</p>
+          <p className="stat-card__label">Total de livros</p>
         </div>
         <div className="stat-card">
           <span className="stat-card__value">
             {s.statusCounts["Read"] || 0}
           </span>
-          <p className="stat-card__label">Books read</p>
+          <p className="stat-card__label">Livros lidos</p>
         </div>
         <div className="stat-card">
           <span className="stat-card__value">
             {s.statusCounts["To be read"] || 0}
           </span>
-          <p className="stat-card__label"> On the shelf (TBR)</p>
+          <p className="stat-card__label"> Na estante (TBR)</p>
         </div>
         <div className="stat-card">
           <span className="stat-card__value">{s.booksReadInYear}</span>
-          <p className="stat-card__label">Read this year</p>
+          <p className="stat-card__label">Lidos este ano</p>
         </div>
         <div className="stat-card">
           <span className="stat-card__value">{s.averageRating}</span>
-          <p className="stat-card__label">Average rating</p>
+          <p className="stat-card__label">Média das notas</p>
         </div>
       </div>
 
       <div className="charts-grid">
         <div className="chart-card">
-          <h3 className="chart-card__title"> Book status</h3>
+          <h3 className="chart-card__title"> Status dos livros</h3>
           <PieChart
             series={[
               {
@@ -131,7 +131,7 @@ export function Dashboard() {
           />
         </div>
         <div className="chart-card">
-          <h3 className="chart-card__title">Rating distribution</h3>
+          <h3 className="chart-card__title">Distribuição das notas</h3>
           <BarChart
             dataset={bar_data}
             xAxis={[
@@ -143,7 +143,7 @@ export function Dashboard() {
           />
         </div>
         <div className="chart-card chart-card--full">
-          <h3 className="chart-card__title">Books read per year</h3>
+          <h3 className="chart-card__title">Livros lidos por ano</h3>
           <LineChart
             dataset={line_data}
             xAxis={[{ scaleType: "band", dataKey: "year" }]}
