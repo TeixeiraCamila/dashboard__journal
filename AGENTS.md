@@ -90,4 +90,4 @@ Pages → hooks (TanStack Query) → api/books.ts → api/client.ts (Axios) → 
 ## Docs
 
 - `README.md`: visão geral, stack, rotas, camada de dados (inglês).
-- `KANBAN.md`: board de funcionalidades (pt-BR).
+- `../KANBAN.md` (raiz do workspace): board consolidado dos 5 repositórios (pt-BR).
