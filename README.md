@@ -43,7 +43,9 @@ npm run preview # serve dist
 ## Data layer
 
 The API drives everything. Every page reads through the hooks in
-`src/hooks/index.ts`; no page calls Axios directly.
+`src/hooks/index.ts`; no page calls Axios directly. Every endpoint below is a
+`GET` and is public on the backend — this app never writes, so it holds no
+session (`Authorization: Bearer` is never sent).
 
 | Hook                | Endpoint                    | Notes                            |
 | ------------------- | --------------------------- | -------------------------------- |
@@ -76,7 +78,8 @@ stylesheet.
 ## Notes
 
 - Genre filtering on the List page runs in the browser against the pages already
-  loaded. The paginated endpoint takes no genre parameter, so a filter can show
-  a short list while more pages remain.
+  loaded. The backend does accept `?genres=` on `GET /api/books` (comma-separated
+  or repeated key, OR semantics, validated against `/options`), but the List page
+  does not send it — so a filter can show a short list while more pages remain.
 - The Dashboard falls back to a zeroed `BookStats` object when `/stats` fails, so
   the charts render empty instead of blanking the page.
